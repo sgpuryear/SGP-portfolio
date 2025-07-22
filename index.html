@@ -23,7 +23,45 @@
     .detail-panel-active { max-height: 500px; padding: 1.5rem; }
     .chart-container { position: relative; width: 100%; max-width: 800px; margin-left: auto; margin-right: auto; height: 350px; }
     @media (min-width: 768px) { .chart-container { height: 400px; } }
-    /* Timeline and other custom styles from your original file can remain here */
+    .tab-button.active {
+      border-bottom: 2px solid #2ECC71 !important;
+      color: #229954 !important;
+    }
+    .tab-button {
+      transition: border-bottom-color 0.2s, color 0.2s;
+    }
+    .headshot-bubble {
+      width: 8.5rem;
+      height: 8.5rem;
+      min-width: 8.5rem;
+      min-height: 8.5rem;
+      max-width: 192px;
+      max-height: 192px;
+      border-radius: 9999px;
+      background: #2ECC71;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(34,153,84,0.12);
+    }
+    .headshot-bubble img {
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 4px solid #229954;
+      background: #eee;
+      box-shadow: 0 2px 8px rgba(34,153,84,0.11);
+    }
+    @media (min-width: 768px) {
+      .headshot-bubble {
+        width: 11rem;
+        height: 11rem;
+        min-width: 11rem;
+        min-height: 11rem;
+      }
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -31,9 +69,9 @@
     <!-- Hero Section -->
     <header class="text-center">
       <div class="flex justify-center mb-6">
-        <div class="w-32 h-32 rounded-full accent-bg flex items-center justify-center text-white text-4xl font-bold">
-          <!-- UPDATED HEADSHOT REFERENCE BELOW -->
-          <img src="https://github.com/sgpuryear/SGP-portfolio/raw/main/SGP%20headshot.jpg" alt="Sienna Puryear Headshot" class="rounded-full w-full h-full object-cover"
+        <div class="headshot-bubble">
+          <!-- UPDATED HEADSHOT REFERENCE BELOW / ENLARGED -->
+          <img src="https://github.com/sgpuryear/SGP-portfolio/raw/main/SGP%20headshot.jpg" alt="Sienna Puryear Headshot"
             onerror="this.onerror=null;this.src='https://placehold.co/128x128/999999/ffffff?text=SGP';">
         </div>
       </div>
@@ -118,80 +156,81 @@
         </div>
         <!-- Resume Tab Content -->
         <div id="tab-resume" class="tab-pane hidden" role="tabpanel">
-          <!-- Career Journey Section -->
-        <section id="career-journey" class="mb-16 pt-1">
-  <h3 class="text-3xl font-bold text-center mb-10">Career Evolution: Leading Innovation Through Impact</h3>
-  <p class="text-center max-w-2xl mx-auto text-gray-700 mb-0">
-    This interactive timeline highlights over a decade of progressive leadership, showcasing a trajectory from project management and business analysis to driving high-impact product initiatives at leading organizations. Scroll horizontally to explore the full journey of innovation, growth, and transformation.
-  </p>
-  <div class="overflow-x-auto h-timeline-container pb-8 mt-8" style="scrollbar-width:thin;scrollbar-color:#ccc #f1f1f1;">
-    <div class="flex flex-nowrap items-center h-timeline min-w-[1200px] relative px-4">
-      <!-- Timeline Line -->
-      <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
-      <!-- Timeline Items -->
-      <div class="relative z-10 flex flex-nowrap items-center space-x-10">
-        <!-- "You are here" -->
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <span class="text-xs accent-color font-bold">My next endeavor:</span>
-            <div class="text-xs">Elevating the customer experience at a global company to unlock growth, deliver future-ready solutions, and lead digital transformation and beyond</div>
-            <div class="text-2xl mt-2">&#11088;</div>
-          </div>
-        </div>
-        <!-- Timeline Positions -->
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <h4 class="font-bold text-sm accent-color">Sr. Consultant, Technical Product Manager</h4>
-            <div class="text-xs text-gray-700">Simpson Thacher Bartlett Law</div>
-            <div class="text-xs text-gray-500">Sep 2024 - April 2025</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <h4 class="font-bold text-sm accent-color">Sr. Consultant, Director of Strategic Partnerships &amp; Engagement</h4>
-            <div class="text-xs text-gray-700">State Representative Electoral Campaign</div>
-            <div class="text-xs text-gray-500">Jan 2024 - Aug 2024</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <h4 class="font-bold text-sm accent-color">Director of Product Management</h4>
-            <div class="text-xs text-gray-700">Comcast Business</div>
-            <div class="text-xs text-gray-500">Jul 2022 - Dec 2023</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <h4 class="font-bold text-sm accent-color">Senior Product Manager</h4>
-            <div class="text-xs text-gray-700">Comcast Business</div>
-            <div class="text-xs text-gray-500">Oct 2020 - Jun 2022</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <h4 class="font-bold text-sm accent-color">Product Manager / Program Manager</h4>
-            <div class="text-xs text-gray-700">Comcast Business</div>
-            <div class="text-xs text-gray-500">Jul 2018 - Sep 2020</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <h4 class="font-bold text-sm accent-color">Consultant, Business Analyst / Project Manager</h4>
-            <div class="text-xs text-gray-700">Comcast Business</div>
-            <div class="text-xs text-gray-500">Feb 2017 - Jul 2018</div>
-          </div>
-        </div>
-        <div class="flex flex-col items-center w-56">
-          <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
-            <h4 class="font-bold text-sm accent-color">Consultant, Project Manager</h4>
-            <div class="text-xs text-gray-700">Bank of America</div>
-            <div class="text-xs text-gray-500">May 2015 - Dec 2016</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <!-- INTERACTIVE TIMELINE SECTION -->
+          <section id="career-journey" class="mb-16 pt-1">
+            <h3 class="text-3xl font-bold text-center mb-10">Career Evolution: Leading Innovation Through Impact</h3>
+            <p class="text-center max-w-2xl mx-auto text-gray-700 mb-0">
+              This interactive timeline highlights over a decade of progressive leadership, showcasing a trajectory from project management and business analysis to driving high-impact product initiatives at leading organizations. Scroll horizontally to explore the full journey of innovation, growth, and transformation. Click a role to view more detail!
+            </p>
+            <div class="overflow-x-auto h-timeline-container pb-8 mt-8" style="scrollbar-width:thin;scrollbar-color:#ccc #f1f1f1;">
+              <div class="relative flex flex-nowrap items-center min-w-[1200px] px-4">
+                <!-- Timeline Line -->
+                <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
+                <div class="relative z-10 flex flex-nowrap items-center space-x-10" id="timeline-cards">
+                  <!-- Timeline Items (with data-index for JS) -->
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="0">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <span class="text-xs accent-color font-bold">My next endeavor:</span>
+                      <div class="text-xs">Elevating the customer experience at a global company to unlock growth, deliver future-ready solutions, and lead digital transformation and beyond</div>
+                      <div class="text-2xl mt-2">&#11088;</div>
+                      <div class="font-bold text-green-800 mt-2 text-base">You Are Here</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="1">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <h4 class="font-bold text-sm accent-color">Sr. Consultant, Technical Product Manager</h4>
+                      <div class="text-xs text-gray-700">Simpson Thacher Bartlett Law</div>
+                      <div class="text-xs text-gray-500">Sep 2024 - April 2025</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="2">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <h4 class="font-bold text-sm accent-color">Sr. Consultant, Director of Strategic Partnerships &amp; Engagement</h4>
+                      <div class="text-xs text-gray-700">State Representative Electoral Campaign</div>
+                      <div class="text-xs text-gray-500">Jan 2024 - Aug 2024</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="3">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <h4 class="font-bold text-sm accent-color">Director of Product Management</h4>
+                      <div class="text-xs text-gray-700">Comcast Business</div>
+                      <div class="text-xs text-gray-500">Jul 2022 - Dec 2023</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="4">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <h4 class="font-bold text-sm accent-color">Senior Product Manager</h4>
+                      <div class="text-xs text-gray-700">Comcast Business</div>
+                      <div class="text-xs text-gray-500">Oct 2020 - Jun 2022</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="5">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <h4 class="font-bold text-sm accent-color">Product Manager / Program Manager</h4>
+                      <div class="text-xs text-gray-700">Comcast Business</div>
+                      <div class="text-xs text-gray-500">Jul 2018 - Sep 2020</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="6">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <h4 class="font-bold text-sm accent-color">Consultant, Business Analyst / Project Manager</h4>
+                      <div class="text-xs text-gray-700">Comcast Business</div>
+                      <div class="text-xs text-gray-500">Feb 2017 - Jul 2018</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-center w-56 cursor-pointer" data-index="7">
+                    <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
+                      <h4 class="font-bold text-sm accent-color">Consultant, Project Manager</h4>
+                      <div class="text-xs text-gray-700">Bank of America</div>
+                      <div class="text-xs text-gray-500">May 2015 - Dec 2016</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Details Panel -->
+              <div id="timeline-details" class="mt-8"></div>
+            </div>
+          </section>
         </div>
         <!-- Skills Tab Content -->
         <div id="tab-skills" class="tab-pane hidden" role="tabpanel">
@@ -204,7 +243,7 @@
             <div id="strengths-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             <div id="strengths-details" class="mt-8"></div>
           </section>
-          <!-- Technical Tools & Skills Section -->
+          <!-- Technical Skills Section -->
           <section id="technical-skills" class="mb-16">
             <h3 class="text-3xl font-bold text-center mb-6">Technical Proficiencies</h3>
             <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
@@ -234,7 +273,7 @@
                 <li>
                   <h4 class="text-xl font-semibold accent-color mb-2">Customer Insights Dashboard</h4>
                   <p class="text-700 leading-relaxed" data-project-id="project2">
-                    Design an interactive dashboard featuring real-time data, personalized alerts, and customizable reporting, empowering users with greater visibility and control to manage accounts and services more efficiently.
+                    Designed and implemented an interactive, self-service dashboard with real-time insights, personalized alerts, network monitoring, and support ticket management. Enabled on-demand and scheduled reporting to empower users to proactively resolve issues, reduce support calls, and increase operational transparency.
                   </p>
                 </li>
                 <li>
@@ -366,8 +405,33 @@
     </footer>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Data for Key Strengths Section
+    // INTERACTIVE TIMELINE DETAILS
+    const timelineDetails = [
+      "", // Next Endeavor (no extra details)
+      "Led technical product management for complex legal platforms, improving workflow efficiency and stakeholder collaboration at Simpson Thacher Bartlett Law.",
+      "Directed strategic partnerships and engagement for a State Representative Electoral Campaign, building coalitions and driving digital strategy.",
+      "Oversaw product management for Comcast Business, launching new platforms, scaling operations, and leading cross-functional teams.",
+      "Advanced digital transformation as Senior Product Manager at Comcast Business, focusing on customer experience and operational excellence.",
+      "Managed programs and products at Comcast Business, delivering impactful solutions and improving team delivery speed and quality.",
+      "Analyzed business needs and managed projects at Comcast Business, streamlining processes and supporting high-performing teams.",
+      "Managed projects for Bank of America, coordinating teams and delivering financial technology initiatives on time and within budget."
+    ];
+    document.addEventListener('DOMContentLoaded', function () {
+      // Timeline interactivity
+      const cards = document.querySelectorAll('#timeline-cards > .flex');
+      const detailsPanel = document.getElementById('timeline-details');
+      cards.forEach(card => {
+        card.addEventListener('click', function () {
+          cards.forEach(c => c.classList.remove('border-2','border-[#229954]'));
+          card.classList.add('border-2','border-[#229954]');
+          const idx = card.getAttribute('data-index');
+          detailsPanel.innerHTML = timelineDetails[idx]
+            ? `<div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#229954] max-w-lg mx-auto text-gray-700">${timelineDetails[idx]}</div>`
+            : "";
+        });
+      });
+
+      // Strengths interactive cards
       const strengthsData = [
         {
           title: 'Strategic Product & Portfolio Management',
@@ -400,10 +464,8 @@
           details: 'Leverages robust quantitative and qualitative data analysis, KPI definition, and continuous experimentation (e.g., A/B testing, user research) to inform product design, track performance, and ensure outcomes-focused delivery. Not afraid to use data and product intuition to make intelligent decisions on strategic bets.'
         }
       ];
-
       const strengthsGrid = document.getElementById('strengths-grid');
       const strengthsDetailsContainer = document.getElementById('strengths-details');
-
       strengthsData.forEach((strength, index) => {
         // Create Card
         const card = document.createElement('div');
@@ -425,31 +487,24 @@
         strengthsDetailsContainer.appendChild(detailPanel);
       });
 
-      const cards = document.querySelectorAll('.strength-card');
-      const panels = document.querySelectorAll('.detail-panel');
-
+      const strengthCards = document.querySelectorAll('.strength-card');
+      const strengthPanels = document.querySelectorAll('.detail-panel');
       strengthsGrid.addEventListener('click', function(e) {
         const clickedCard = e.target.closest('.strength-card');
         if (!clickedCard) return;
-
         const index = clickedCard.dataset.index;
         const isActive = clickedCard.classList.contains('card-active');
-
-        // Reset all cards and panels
-        cards.forEach(card => card.classList.remove('card-active'));
-        panels.forEach(panel => panel.classList.remove('detail-panel-active'));
-
-        // Activate the clicked one if it wasn't already active
+        strengthCards.forEach(card => card.classList.remove('card-active'));
+        strengthPanels.forEach(panel => panel.classList.remove('detail-panel-active'));
         if (!isActive) {
           clickedCard.classList.add('card-active');
           document.querySelector(`.detail-panel[data-index='${index}']`).classList.add('detail-panel-active');
         }
       });
 
-      // Tabs functionality
+      // Tabs functionality with green underline
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabPanes = document.querySelectorAll('.tab-pane');
-
       function showTab(tabId) {
         tabPanes.forEach(pane => {
           if (pane.id === `tab-${tabId}`) {
@@ -460,25 +515,19 @@
             pane.classList.remove('active');
           }
         });
-
         tabButtons.forEach(button => {
           if (button.dataset.tab === tabId) {
-            button.classList.add('active', 'border-accent-color', 'text-accent-color');
-            button.classList.remove('border-transparent', 'hover:border-gray-300', 'text-gray-500', 'hover:text-gray-700');
+            button.classList.add('active');
           } else {
-            button.classList.remove('active', 'border-accent-color', 'text-accent-color');
-            button.classList.add('border-transparent', 'hover:border-gray-300', 'text-gray-500', 'hover:text-gray-700');
+            button.classList.remove('active');
           }
         });
       }
-
       tabButtons.forEach(button => {
         button.addEventListener('click', () => {
           showTab(button.dataset.tab);
         });
       });
-
-      // Show the default tab on page load
       showTab('about-me'); // Set 'about-me' as the default active tab
     });
   </script>
