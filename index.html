@@ -62,7 +62,6 @@
         min-height: 11rem;
       }
     }
-    /* Impact metric highlight styles */
     .metric-highlight {
       background: linear-gradient(90deg, #2ECC71 0%, #229954 100%);
       color: #fff;
@@ -86,38 +85,75 @@
       margin-bottom: 0.5rem;
       font-weight: 400;
     }
-    /* New: Leaderbar styles */
-    .leaderbar-metric {
-      flex: 1 1 0;
-      min-width: 120px;
-      max-width: 170px;
+    /* Timeline styles */
+    .h-timeline-container {
+      position: relative;
+      padding: 40px 0;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #ccc #f1f1f1;
+    }
+    .h-timeline-container::-webkit-scrollbar { height: 8px; }
+    .h-timeline-container::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+    .h-timeline-container::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+    .h-timeline {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      position: relative;
+      padding: 0 20px;
+      min-width: 1300px;
+    }
+    .h-timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0; right: 0;
+      height: 4px;
+      background-color: #e5e7eb;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    .h-timeline-item {
+      flex: 0 0 auto;
+      width: 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 0.5rem 0;
+      position: relative;
+      z-index: 2;
+      margin-right: 20px;
     }
-    .leaderbar-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #229954;
-      margin-bottom: 0.25rem;
-      line-height: 1.1;
-    }
-    .leaderbar-label {
-      font-size: 1rem;
-      color: #4B5563;
-      font-weight: 500;
+    .h-timeline-item:last-child { margin-right: 0; }
+    .h-timeline-content {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      border-top: 4px solid #2ECC71;
+      margin-top: 20px;
       text-align: center;
+      width: 100%;
     }
-    @media (max-width: 640px) {
-      .leaderbar-metric {
-        min-width: 100px;
-        font-size: 0.92rem;
+    .h-timeline-item:nth-child(even) .h-timeline-content {
+      border-top: none;
+      border-bottom: 4px solid #2ECC71;
+      margin-top: -20px;
+    }
+    @media (max-width: 767px) {
+      .h-timeline-container { overflow-x: hidden; }
+      .h-timeline { flex-direction: column; align-items: flex-start; min-width: unset; padding-left: 20px; }
+      .h-timeline::before {
+        left: 20px;
+        width: 4px;
+        top: 0; bottom: 0;
+        height: 100%;
+        transform: translateX(-50%);
       }
-      .leaderbar-value {
-        font-size: 2rem;
-      }
+      .h-timeline-item { width: calc(100% - 40px); margin-bottom: 40px; margin-right: 0; align-items: flex-start; padding-left: 40px; }
+      .h-timeline-item:last-child { margin-bottom: 0; }
+      .h-timeline-content { width: 100%; margin-top: 0; border-top: 4px solid #2ECC71; border-bottom: none !important; }
+      .h-timeline-item:nth-child(even) .h-timeline-content { margin-top: 0; border-bottom: none !important; border-top: 4px solid #2ECC71 !important; }
     }
   </style>
 </head>
@@ -133,52 +169,42 @@
       </div>
       <h1 class="text-4xl md:text-5xl font-bold mb-2">Sienna Green Puryear</h1>
       <h2 class="text-xl md:text-2xl mb-6 accent-color font-bold">Visionary &amp; Customer-Obsessed Product Leader</h2>
-      <!-- Tab Navigation -->
       <div class="mb-0 border-b border-gray-200">
         <nav class="-mb-px flex justify-center space-x-8" aria-label="Tabs" role="tablist">
-          <!-- Tab buttons here (truncated for brevity) -->
+          <button type="button" class="tab-button active inline-flex items-center gap-x-2 py-4 px-1 text-base font-medium whitespace-nowrap border-b-2 border-transparent focus:outline-none rounded-t-lg" data-tab="about-me">About Me</button>
+          <button type="button" class="tab-button inline-flex items-center gap-x-2 py-4 px-1 text-base font-medium whitespace-nowrap border-b-2 border-transparent focus:outline-none rounded-t-lg" data-tab="career-impact">Impact</button>
+          <button type="button" class="tab-button inline-flex items-center gap-x-2 py-4 px-1 text-base font-medium whitespace-nowrap border-b-2 border-transparent focus:outline-none rounded-t-lg" data-tab="resume">Experience</button>
+          <button type="button" class="tab-button inline-flex items-center gap-x-2 py-4 px-1 text-base font-medium whitespace-nowrap border-b-2 border-transparent focus:outline-none rounded-t-lg" data-tab="skills">Core Skills</button>
+          <button type="button" class="tab-button inline-flex items-center gap-x-2 py-4 px-1 text-base font-medium whitespace-nowrap border-b-2 border-transparent focus:outline-none rounded-t-lg" data-tab="projects">Notable Work</button>
+          <button type="button" class="tab-button inline-flex items-center gap-x-2 py-4 px-1 text-base font-medium whitespace-nowrap border-b-2 border-transparent focus:outline-none rounded-t-lg" data-tab="awards-details">Awards & Details</button>
         </nav>
       </div>
     </header>
     <main>
-      <!-- Tab Content -->
       <div id="tab-content-container">
-        <!-- About Me Tab Content -->
+        <!-- ABOUT ME TAB -->
         <div id="tab-about-me" class="tab-pane active" role="tabpanel">
-          <!-- ... About me content ... -->
-        </div>
-        <!-- Career & Impact Tab Content -->
-        <div id="tab-career-impact" class="tab-pane hidden" role="tabpanel">
-          <!-- Impact Leader Bar (moved to top) -->
-          <section id="impact-leaderbar" class="mb-10 pt-1">
-            <div class="flex flex-row flex-wrap gap-3 md:gap-6 justify-center items-stretch bg-white rounded-2xl shadow-lg px-4 py-6 md:px-8 md:py-7 mb-8">
-              <div class="leaderbar-metric">
-                <span class="leaderbar-value">$1B+</span>
-                <span class="leaderbar-label">Revenue Stream</span>
-              </div>
-              <div class="leaderbar-metric">
-                <span class="leaderbar-value">200%</span>
-                <span class="leaderbar-label">Adoption Growth</span>
-              </div>
-              <div class="leaderbar-metric">
-                <span class="leaderbar-value">4</span>
-                <span class="leaderbar-label">Flagship Launches</span>
-              </div>
-              <div class="leaderbar-metric">
-                <span class="leaderbar-value">35%</span>
-                <span class="leaderbar-label">Satisfaction Lift</span>
-              </div>
-              <div class="leaderbar-metric">
-                <span class="leaderbar-value">~80</span>
-                <span class="leaderbar-label">Features Shipped</span>
-              </div>
-            </div>
+          <section id="about-me-summary" class="mb-0 pt-1">
+            <p class="max-w-3xl mx-auto text-sm md:text-base text-gray-700 leading-relaxed border-l-4 border-accent-color pl-4 mt-0 text-justify">
+              Strategic product leader with a General Manager mindset and 10+ years of experience developing and delivering scalable, customer-centric digital platforms and technology solutions, advancing growth, retention, and operational efficiency. I uncover and translate complex problems into clear, actionable strategies, leading high-impact initiatives from concept through global launch and ongoing support. Known for navigating ambiguity and aligning diverse stakeholders around a shared vision to drive meaningful and measurable outcomes.
+            </p>
+            <p class="max-w-3xl mx-auto text-sm md:text-base text-gray-700 leading-relaxed mt-4 border-l-4 border-accent-color pl-4 text-justify">
+              With a proven track record of architecting long-term roadmaps while executing with tactical precision, I build and lead inclusive, distributed teams to deliver intelligent routing and automated workflows, user-friendly self-service solutions, and integrated agent tools. I pair product intuition with data-driven rigor to deliver exceptional user experiences that balance customer needs with business goals—thriving in fast-paced, high-growth environments.
+            </p>
           </section>
-          <!-- Key Metrics Section -->
+          <hr class="my-6 border-t-2 accent-border w-24 mx-auto">
+          <section id="location-flexibility" class="mb-16 pt-0">
+            <h3 class="text-xl font-bold text-center mt-8 mb-4">Location Flexibility &amp; Regions of Interest</h3>
+            <p class="max-w-3xl mx-auto text-base md:text-lg text-gray-700 leading-relaxed text-center">
+              Based in Metro Philadelphia, I am willing to travel and open to hybrid roles in Philadelphia, New York, Baltimore, and Washington D.C.,<br>or fully remote opportunities.
+            </p>
+          </section>
+        </div>
+        <!-- IMPACT TAB -->
+        <div id="tab-career-impact" class="tab-pane hidden" role="tabpanel">
           <section id="metrics" class="mb-16 pt-1">
             <h3 class="text-3xl font-bold text-center mb-10">Impact Highlights</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-8">
-              <!-- ... existing metric boxes ... -->
               <div class="bg-white p-6 rounded-lg shadow-md text-center">
                 <div class="metric-highlight">$7.3M</div>
                 <div class="metric-label">Investment Secured & Managed</div>
@@ -223,16 +249,398 @@
                 <div class="text-gray-600 mt-2">(from the ground up)</div>
               </div>
             </div>
+            <div class="mt-12 flex flex-col items-center">
+              <h4 class="text-xl font-bold mb-3 accent-color">Impact Visualized</h4>
+              <div class="flex flex-wrap gap-6 justify-center">
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">$1B+</span>
+                  <span class="text-sm text-gray-600">Revenue Stream</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">200%</span>
+                  <span class="text-sm text-gray-600">Adoption Growth</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">4</span>
+                  <span class="text-sm text-gray-600">Flagship Launches</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">35%</span>
+                  <span class="text-sm text-gray-600">Satisfaction Lift</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">~80</span>
+                  <span class="text-sm text-gray-600">Features Shipped</span>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
-        <!-- Other tab contents (Resume, Skills, Projects, etc.) -->
-        <!-- ... -->
+        <!-- EXPERIENCE TAB (Interactive Timeline) -->
+        <div id="tab-resume" class="tab-pane hidden" role="tabpanel">
+          <section id="career-journey" class="mb-16 pt-1">
+            <h3 class="text-3xl font-bold text-center mb-10">Career Evolution: Leading Innovation Through Impact</h3>
+            <p class="text-center max-w-2xl mx-auto text-gray-700 mb-0">
+              This interactive timeline highlights over a decade of progressive leadership, showcasing a trajectory from project management and business analysis to driving high-impact product initiatives at leading organizations. Scroll horizontally to explore the full journey of innovation, growth, and transformation.
+            </p>
+            <div class="h-timeline-container">
+              <div class="h-timeline">
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <p class="text-xs accent-color"><b class="font-bold">My next endeavor</b>: Elevating the customer experience at a global company to unlock growth, deliver future-ready solutions, and lead digital transformation and beyond</p>
+                    <p class="text-2xl mt-2">&#11088;</p>
+                  </div>
+                </div>
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <h4 class="font-bold text-sm accent-color">Sr. Consultant, Technical Product Manager</h4>
+                    <p class="text-xs text-gray-700">Simpson Thacher Bartlett Law</p>
+                    <p class="text-xs text-gray-500">Sep 2024 - April 2025</p>
+                  </div>
+                </div>
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <h4 class="font-bold text-sm accent-color">Sr. Consultant, Director of Strategic Partnerships & Engagement</h4>
+                    <p class="text-xs text-gray-700">State Representative Electoral Campaign</p>
+                    <p class="text-xs text-gray-500">Jan 2024 - Aug 2024</p>
+                  </div>
+                </div>
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <h4 class="font-bold text-sm accent-color">Director of Product Management</h4>
+                    <p class="text-xs text-gray-700">Comcast Business</p>
+                    <p class="text-xs text-gray-500">Jul 2022 - Dec 2023</p>
+                  </div>
+                </div>
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <h4 class="font-bold text-sm accent-color">Senior Product Manager</h4>
+                    <p class="text-xs text-gray-700">Comcast Business</p>
+                    <p class="text-xs text-gray-500">Oct 2020 - Jun 2022</p>
+                  </div>
+                </div>
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <h4 class="font-bold text-sm accent-color">Product Manager / Program Manager</h4>
+                    <p class="text-xs text-gray-700">Comcast Business</p>
+                    <p class="text-xs text-gray-500">Jul 2018 - Sep 2020</p>
+                  </div>
+                </div>
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <h4 class="font-bold text-sm accent-color">Consultant, Business Analyst / Project Manager</h4>
+                    <p class="text-xs text-gray-700">Comcast Business</p>
+                    <p class="text-xs text-gray-500">Feb 2017 - Jul 2018</p>
+                  </div>
+                </div>
+                <div class="h-timeline-item">
+                  <div class="h-timeline-content">
+                    <h4 class="font-bold text-sm accent-color">Consultant, Project Manager</h4>
+                    <p class="text-xs text-gray-700">Bank of America</p>
+                    <p class="text-xs text-gray-500">May 2015 - Dec 2016</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- CORE SKILLS TAB (Interactive Card Grid) -->
+        <div id="tab-skills" class="tab-pane hidden" role="tabpanel">
+          <section id="strengths" class="mb-16 pt-1">
+            <h3 class="text-3xl font-bold text-center mb-2">Strengths &amp; Industry Expertise</h3>
+            <p class="text-center max-w-2xl mx-auto text-gray-700 mb-10">
+              Click on any strength below to see more details about how I apply these skills to deliver exceptional results.
+            </p>
+            <div id="strengths-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="strengths-details" class="mt-8"></div>
+          </section>
+          <section id="technical-skills" class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-6">Technical Proficiencies</h3>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+              <h4 class="text-xl font-semibold accent-color mb-4">Tools &amp; Platforms</h4>
+              <p class="text-gray-700 leading-relaxed">
+                Azure DevOps, Confluence, Figma, Figjam, JIRA, Microsoft 365, Miro, Rally, Airtable, Adobe Analytics, Salesforce, ServiceNow, Google Suite
+              </p>
+            </div>
+          </section>
+        </div>
+        <!-- NOTABLE WORK TAB (Restored Original) -->
+        <div id="tab-projects" class="tab-pane hidden" role="tabpanel">
+          <section id="key-projects" class="mb-16 pt-1">
+            <h3 class="text-3xl font-bold text-center mb-6">Key Projects &amp; Strategic Initiatives</h3>
+            <p class="text-center max-w-2xl mx-auto text-gray-700 mb-10">
+              A selection of significant projects demonstrating my leadership in product development, strategic execution, and driving measurable impact across diverse domains.
+            </p>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+              <ul class="list-none space-y-8" id="project-list">
+                <li>
+                  <h4 class="text-xl font-semibold accent-color mb-2">Payment &amp; Billing Modernization</h4>
+                  <p class="text-gray-700 leading-relaxed" data-project-id="project1">
+                    Launched a unified billing and payment experience for over 90,000 consumer accounts, third-party vendors, and internal teams supporting a $1B+ revenue stream. Achieved substantial cost savings and improved efficiency by automating financial services workflows, enabling internal teams with an integrated workplace solution for back-office operations.
+                  </p>
+                </li>
+                <li>
+                  <h4 class="text-xl font-semibold accent-color mb-2">Customer Insights Dashboard</h4>
+                  <p class="text-gray-700 leading-relaxed" data-project-id="project2">
+                    Designed and implemented an interactive, self-service dashboard with real-time insights, personalized alerts, network monitoring, and support ticket management. Enabled on-demand access to data, improved troubleshooting, and streamlined support interactions for enterprise clients.
+                  </p>
+                </li>
+                <li>
+                  <h4 class="text-xl font-semibold accent-color mb-2">Order Management Optimization</h4>
+                  <p class="text-gray-700 leading-relaxed" data-project-id="project3">
+                    Redesigned and automated order flows for new requests, changes, and cancellations across varied customer segments. Improved order accuracy and reduced support dependency, driving a 20% increase in feature engagement by simplifying complex processes.
+                  </p>
+                </li>
+                <li>
+                  <h4 class="text-xl font-semibold accent-color mb-2">Global Business Expansion</h4>
+                  <p class="text-gray-700 leading-relaxed" data-project-id="project4">
+                    Led internationalization efforts to enable entry into different cities and markets globally, implementing a scalable self-service solution for business customers, ensuring compliance with local nuances to enhance our marketplace presence.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section id="featured-project" class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-6">Spotlight Feature: Transforming Enterprise Customer Experience</h3>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto text-center">
+              <h4 class="text-xl font-semibold mb-4 accent-color">Challenge: Disconnected Experience for Enterprise Customers</h4>
+              <p class="text-gray-700 mb-6 leading-relaxed">
+                Enterprise clients faced fragmented digital experiences, limited self-service options, and high dependency on support channels, resulting in frustration, operational bottlenecks, and missed opportunities.
+              </p>
+              <h4 class="text-xl font-semibold mb-4 accent-color">Action: Vision, Discovery & Human-Centered Design</h4>
+              <p class="text-gray-700 mb-6 leading-relaxed">
+                I led cross-functional teams from discovery and proof of concept through full-scale launch, partnering directly with customers and internal stakeholders to deeply understand pain points and needs, resulting in elegant, scalable solutions.
+              </p>
+              <h4 class="text-xl font-semibold mb-4 accent-color">Impact: Adoption, Recognition & Industry Leadership</h4>
+              <p class="text-gray-700 mb-6 leading-relaxed">
+                The initiative achieved a 200% increase in user adoption, a 35% lift in satisfaction, and significant operational savings. Our work earned two Gold MarCom Awards and two Silver W3 Awards in 2023, underscoring my commitment to human-centered design, exceptional user experience, and increased product adoption in complex B2B/B2C environments.
+              </p>
+              <a href="https://business.comcast.com/Comcast-Business-Puts-Control-and-Convenience-in-the-Hands-of-Enterprise-Customers" target="_blank" rel="noopener noreferrer" class="inline-block accent-bg text-white font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity">
+                Watch Project Video
+              </a>
+            </div>
+          </section>
+        </div>
+        <!-- AWARDS & DETAILS TAB (Restored Original) -->
+        <div id="tab-awards-details" class="tab-pane hidden" role="tabpanel">
+          <section id="career-defining-moments" class="mb-16 pt-1">
+            <h3 class="text-3xl font-bold text-center mb-6">Career Defining Moments</h3>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+              <div class="mb-6">
+                <h4 class="text-xl font-semibold accent-color mb-3">Awards &amp; Leadership Programs:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>Rising Leaders Program, WICT (2023)</li>
+                  <li>Product Paragon Award, Comcast Business (2022)</li>
+                  <li>Mid-Level Managers Symposium (MLMS), Executive Leadership Council (2022)</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section id="testimonials" class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-6">What People Say About Me</h3>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto space-y-6">
+              <h4 class="text-xl font-semibold accent-color mb-3">Testimonials</h4>
+              <div class="border-l-4 border-accent-color pl-4 italic text-gray-700">
+                <p>"Sienna is one of the finest product managers I’ve worked with across my 20+ years in Digital. Sienna is highly respected across Comcast Business and can operate at all levels - from executive strategy to technical delivery."</p>
+                <p class="mt-2 text-sm font-semibold text-gray-600">- Adam Sosinsky, Executive Director, Customer &amp; Digital Experience</p>
+              </div>
+              <div class="border-l-4 border-accent-color pl-4 italic text-gray-700">
+                <p>"Fabulous Product Manager with a broader vision and attention to the details at the same time. Multiple national and international award winner for digital transformation work. Easy to work with and a true leader!"</p>
+                <p class="mt-2 text-sm font-semibold text-gray-600">- Datta Sapre, Executive Director, Systems &amp; Engineering</p>
+              </div>
+            </div>
+          </section>
+          <section id="industry-awards" class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-6">Select Industry Awards</h3>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+              <div class="mb-6">
+                <h4 class="text-xl font-semibold accent-color mb-3">Gold MarCom Awards:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>Self-Service Modem Restart and Help Desk Experience for Website/B2B</li>
+                  <li>Self-Service Modem Restart and Help Desk Experience for Website Design</li>
+                </ul>
+                <p class="text-sm text-gray-600 mt-2">
+                  The MarCom Awards are renowned for honoring excellence in marketing and communication, highlighting our digital communication efforts as world-class.
+                </p>
+              </div>
+              <div class="mb-6">
+                <h4 class="text-xl font-semibold accent-color mb-3">Silver W3 Awards:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>Self-Service Modem Restart and Help Desk Experience for Best Interactive Experience</li>
+                  <li>Self-Service Modem Restart and Help Desk Experience for Best User Experience</li>
+                </ul>
+                <p class="text-sm text-gray-600 mt-2">
+                  The W3 Awards celebrate creativity and excellence in website design and digital marketing, providing prestigious recognition for innovative digital work across various industries.
+                </p>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold accent-color mb-3">Gartner® Magic Quadrant® Reports:</h4>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>Recognized in the 2023 Gartner® Magic Quadrant® for Managed Network Services.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section id="fun-fact" class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-6">Fun Fact</h3>
+            <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto text-center">
+              <p class="text-gray-700 leading-relaxed italic">
+                <span class="text-5xl accent-color leading-none relative top-3 mr-2">&#10077;</span>
+                With an artist for a mother, it’s no surprise both my first and last (maiden) names are colors—and I’m also married to an artist. Creativity runs deep in my life.
+                <span class="text-5xl accent-color leading-none relative top-3 ml-2">&#10078;</span>
+              </p>
+            </div>
+          </section>
+          <section id="conclusion" class="text-center bg-white p-8 rounded-lg shadow-md mb-12">
+            <p class="text-lg text-gray-800 leading-relaxed max-w-3xl mx-auto">
+              I am eager to apply my extensive product management expertise, hands-on leadership, and passion for continuous innovation to drive significant value and deliver impactful, customer-centric results in your organization.
+            </p>
+          </section>
+          <section id="location-flexibility-awards" class="mb-16 pt-0">
+            <h3 class="text-xl font-bold text-center mt-8 mb-4">Location Flexibility &amp; Regions of Interest</h3>
+            <p class="max-w-3xl mx-auto text-base md:text-lg text-gray-700 leading-relaxed text-center">
+              Based in Metro Philadelphia, I am willing to travel and open to hybrid roles in Philadelphia, New York, Baltimore, and Washington D.C.,<br>or fully remote opportunities.
+            </p>
+          </section>
+        </div>
       </div>
     </main>
-    <!-- Footer -->
-    <!-- ... Footer code ... -->
-    <script>
-      // ... JavaScript code unchanged ...
-    </script>
+    <footer class="text-center border-t pt-8">
+      <p class="text-lg font-semibold">Get in Touch</p>
+      <p class="text-gray-600 mb-4">sgpuryear@gmail.com</p>
+      <a href="https://www.linkedin.com/in/sienna-green-puryear/" target="_blank" rel="noopener noreferrer" class="inline-block accent-bg text-white font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity">
+        Connect on LinkedIn
+      </a>
+    </footer>
+  </div>
+  <script>
+    // INTERACTIVE TIMELINE DETAILS
+    const timelineDetails = [
+      "", // Next Endeavor (no extra details)
+      "Led technical product management for complex legal platforms, improving workflow efficiency and stakeholder collaboration at Simpson Thacher Bartlett Law.",
+      "Directed strategic partnerships and engagement for a State Representative Electoral Campaign, building coalitions and driving digital strategy.",
+      "Oversaw product management for Comcast Business, launching new platforms, scaling operations, and leading cross-functional teams.",
+      "Advanced digital transformation as Senior Product Manager at Comcast Business, focusing on customer experience and operational excellence.",
+      "Managed programs and products at Comcast Business, delivering impactful solutions and improving team delivery speed and quality.",
+      "Analyzed business needs and managed projects at Comcast Business, streamlining processes and supporting high-performing teams.",
+      "Managed projects for Bank of America, coordinating teams and delivering financial technology initiatives on time and within budget."
+    ];
+    document.addEventListener('DOMContentLoaded', function () {
+      // Timeline interactivity
+      const timelineCards = document.querySelectorAll('.h-timeline-item');
+      const detailsPanel = document.createElement('div');
+      detailsPanel.id = "timeline-details";
+      detailsPanel.className = "mt-8";
+      document.querySelector('.h-timeline-container').appendChild(detailsPanel);
+      timelineCards.forEach((card, idx) => {
+        card.addEventListener('click', function () {
+          timelineCards.forEach(c => c.classList.remove('border-2','border-[#229954]'));
+          card.classList.add('border-2','border-[#229954]');
+          detailsPanel.innerHTML = timelineDetails[idx]
+            ? `<div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#229954] max-w-lg mx-auto text-gray-700">${timelineDetails[idx]}</div>`
+            : "";
+        });
+      });
+
+      // Strengths interactive cards
+      const strengthsData = [
+        {
+          title: 'Strategic Product & Portfolio Management',
+          icon: '🎧',
+          details: 'Proven ability to architect comprehensive product roadmaps, align initiatives with overarching business goals, and secure significant funding (e.g., $5.6M, $1.7M investments) for transformative digital solutions. Includes expertise in Product Development (0-1) and Product Strategy & Roadmap Execution.'
+        },
+        {
+          title: 'Driving Digital Transformation & Growth',
+          icon: '🚀',
+          details: 'Expertise in spearheading the launch and evolution of complex platforms, including a $1B+ billing and payment system, leading to substantial cost savings, operational efficiencies, and increased customer adoption (e.g., 200% increase in customer adoption, 35% increase in customer satisfaction). Encompasses areas like Software Engineering, Logistics, and Supportability for robust digital platforms.'
+        },
+        {
+          title: 'Agile Leadership & Team Empowerment',
+          icon: '🤝',
+          details: 'Skilled in leading, mentoring, and inspiring multiple high-performing cross-functional teams (20+ members) in Agile (SAFe & Scrum) and Waterfall methodologies. Fosters collaborative product cultures and accelerates delivery through iterative development cycles (e.g., 15% delivery acceleration).'
+        },
+        {
+          title: 'Customer-Centric Innovation',
+          icon: '💡',
+          details: 'Deep commitment to understanding customer needs, enhancing user experience through human-centered design, and delivering best-in-class solutions that drive engagement and retention (e.g., 20% improvement in user engagement). Actively engages with customers to inform design and development.'
+        },
+        {
+          title: 'Stakeholder Alignment & Executive Communication',
+          icon: '📣',
+          details: 'Adept at influencing stakeholders at all levels, bridging technical and business understanding, and articulating complex ideas to diverse audiences, including executive leadership, to build consensus and drive shared vision. Prioritizes across competing demands and fosters positive outcomes.'
+        },
+        {
+          title: 'Data-Driven Decision Making & Experimentation',
+          icon: '📊',
+          details: 'Leverages robust quantitative and qualitative data analysis, KPI definition, and continuous experimentation (e.g., A/B testing, user research) to inform product design, track performance, and ensure outcomes-focused delivery. Not afraid to use data and product intuition to make intelligent decisions on strategic bets.'
+        }
+      ];
+      const strengthsGrid = document.getElementById('strengths-grid');
+      const strengthsDetailsContainer = document.getElementById('strengths-details');
+      strengthsData.forEach((strength, index) => {
+        // Create Card
+        const card = document.createElement('div');
+        card.className = 'strength-card bg-white p-6 rounded-lg shadow-md cursor-pointer border-2 border-transparent transition-all duration-300';
+        card.dataset.index = index;
+        card.innerHTML = `
+          <div class="flex items-center">
+            <span class="text-3xl mr-4">${strength.icon}</span>
+            <h4 class="text-lg font-semibold">${strength.title}</h4>
+          </div>
+        `;
+        strengthsGrid.appendChild(card);
+
+        // Create Detail Panel
+        const detailPanel = document.createElement('div');
+        detailPanel.className = 'detail-panel bg-white rounded-lg shadow-inner';
+        detailPanel.dataset.index = index;
+        detailPanel.innerHTML = `<p class="text-gray-700 leading-relaxed">${strength.details}</p>`;
+        strengthsDetailsContainer.appendChild(detailPanel);
+      });
+
+      const strengthCards = document.querySelectorAll('.strength-card');
+      const strengthPanels = document.querySelectorAll('.detail-panel');
+      strengthsGrid.addEventListener('click', function(e) {
+        const clickedCard = e.target.closest('.strength-card');
+        if (!clickedCard) return;
+        const index = clickedCard.dataset.index;
+        const isActive = clickedCard.classList.contains('card-active');
+        strengthCards.forEach(card => card.classList.remove('card-active'));
+        strengthPanels.forEach(panel => panel.classList.remove('detail-panel-active'));
+        if (!isActive) {
+          clickedCard.classList.add('card-active');
+          document.querySelector(`.detail-panel[data-index='${index}']`).classList.add('detail-panel-active');
+        }
+      });
+
+      // Tabs functionality
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+      function showTab(tabId) {
+        tabPanes.forEach(pane => {
+          if (pane.id === `tab-${tabId}`) {
+            pane.classList.remove('hidden');
+            pane.classList.add('active');
+          } else {
+            pane.classList.add('hidden');
+            pane.classList.remove('active');
+          }
+        });
+        tabButtons.forEach(button => {
+          if (button.dataset.tab === tabId) {
+            button.classList.add('active');
+          } else {
+            button.classList.remove('active');
+          }
+        });
+      }
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          showTab(button.dataset.tab);
+        });
+      });
+      showTab('about-me'); // Default active tab
+    });
+  </script>
 </body>
 </html>
