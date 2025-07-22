@@ -62,6 +62,30 @@
         min-height: 11rem;
       }
     }
+    /* Impact metric highlight styles */
+    .metric-highlight {
+      background: linear-gradient(90deg, #2ECC71 0%, #229954 100%);
+      color: #fff;
+      font-weight: bold;
+      font-size: 2.5rem;
+      border-radius: 1.5rem;
+      padding: 1.25rem 0;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 16px rgba(34,153,84,0.09);
+      letter-spacing: 0.025em;
+    }
+    .metric-label {
+      font-size: 1.125rem;
+      color: #229954;
+      font-weight: 600;
+      margin: 0.5rem 0;
+    }
+    .metric-desc {
+      color: #4B5563;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -116,40 +140,74 @@
           <section id="metrics" class="mb-16 pt-1">
             <h3 class="text-3xl font-bold text-center mb-10">Impact Highlights</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 md:gap-8">
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">$7.3M</p>
-                <p class="text-gray-600 mt-2">Investment Secured and Managed</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">$7.3M</div>
+                <div class="metric-label">Investment Secured & Managed</div>
+                <div class="metric-desc">Drove transformational product and platform initiatives by securing and stewarding multi-million dollar investments.</div>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">200%</p>
-                <p class="text-gray-600 mt-2">Increase in User Adoption</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">200%</div>
+                <div class="metric-label">User Adoption Increase</div>
+                <div class="metric-desc">Propelled product engagement and adoption through strategic launches and user-centric enhancements.</div>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">$1B+</p>
-                <p class="text-gray-600 mt-2">Revenue Stream Stewarded</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">$1B+</div>
+                <div class="metric-label">Revenue Stream Stewarded</div>
+                <div class="metric-desc">Oversaw and optimized platforms powering billion-dollar revenue streams for enterprise and consumer segments.</div>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">35%</p>
-                <p class="text-gray-600 mt-2">YoY Increase in Satisfaction</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">35%</div>
+                <div class="metric-label">YoY Satisfaction Increase</div>
+                <div class="metric-desc">Elevated customer experience, driving measurable improvements in satisfaction and loyalty.</div>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">70+</p>
-                <p class="text-gray-600 mt-2">Team Members Led &amp; Empowered</p>
-                <p class="text-gray-600">(spanning 4 cross-functional teams)</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">70+</div>
+                <div class="metric-label">Team Members Led</div>
+                <div class="metric-desc">Empowered high-performing, cross-functional teams spanning 4 business units.</div>
+                <div class="text-gray-600">(spanning 4 cross-functional teams)</div>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">~100</p>
-                <p class="text-gray-600 mt-2">Stakeholders Managed</p>
-                <p class="text-600 mt-2">(simultaneously across delivery teams and C-suite)</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">~100</div>
+                <div class="metric-label">Stakeholders Managed</div>
+                <div class="metric-desc">Orchestrated alignment and delivery by managing stakeholders across delivery teams and the C-suite.</div>
+                <div class="text-gray-600">(simultaneously across delivery teams and C-suite)</div>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">~80</p>
-                <p class="text-gray-600 mt-2">Self-Service Features &amp; Enhancements Delivered</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">~80</div>
+                <div class="metric-label">Self-Service Features Delivered</div>
+                <div class="metric-desc">Pioneered and launched nearly a hundred digital self-service features and enhancements.</div>
               </div>
-              <div class="bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:-translate-y-1">
-                <p class="text-4xl font-bold accent-color">4</p>
-                <p class="text-gray-600 mt-2">New Products/Platforms Launched</p>
-                <p class="text-gray-600 mt-2">(from the ground up)</p>
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="metric-highlight">4</div>
+                <div class="metric-label">New Products/Platforms Launched</div>
+                <div class="metric-desc">Brought four major products/platforms to life — from concept to execution.</div>
+                <div class="text-gray-600 mt-2">(from the ground up)</div>
+              </div>
+            </div>
+            <!-- Visual Achievement Section: Impact Infographic -->
+            <div class="mt-12 flex flex-col items-center">
+              <h4 class="text-xl font-bold mb-3 accent-color">Impact Visualized</h4>
+              <div class="flex flex-wrap gap-6 justify-center">
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">$1B+</span>
+                  <span class="text-sm text-gray-600">Revenue Stream</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">200%</span>
+                  <span class="text-sm text-gray-600">Adoption Growth</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">4</span>
+                  <span class="text-sm text-gray-600">Flagship Launches</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">35%</span>
+                  <span class="text-sm text-gray-600">Satisfaction Lift</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-5xl font-bold accent-color">~80</span>
+                  <span class="text-sm text-gray-600">Features Shipped</span>
+                </div>
               </div>
             </div>
           </section>
@@ -167,7 +225,6 @@
                 <!-- Timeline Line -->
                 <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
                 <div class="relative z-10 flex flex-nowrap items-center space-x-10" id="timeline-cards">
-                  <!-- Timeline Items (with data-index for JS) -->
                   <div class="flex flex-col items-center w-56 cursor-pointer" data-index="0">
                     <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
                       <span class="text-xs accent-color font-bold">My next endeavor:</span>
@@ -176,6 +233,7 @@
                       <div class="font-bold text-green-800 mt-2 text-base">You Are Here</div>
                     </div>
                   </div>
+                  <!-- ...rest of timeline as before... -->
                   <div class="flex flex-col items-center w-56 cursor-pointer" data-index="1">
                     <div class="bg-white p-4 rounded-lg shadow-lg border-t-4 border-[#229954] text-center mb-2">
                       <h4 class="font-bold text-sm accent-color">Sr. Consultant, Technical Product Manager</h4>
@@ -291,13 +349,21 @@
               </ul>
             </div>
           </section>
-          <!-- Featured Project Showcase -->
+          <!-- Spotlight Feature as Narrative Arc -->
           <section id="featured-project" class="mb-16">
-            <h3 class="text-3xl font-bold text-center mb-6">Spotlight Feature</h3>
+            <h3 class="text-3xl font-bold text-center mb-6">Spotlight Feature: Transforming Enterprise Customer Experience</h3>
             <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto text-center">
-              <h4 class="text-xl font-semibold mb-4">Comcast Business Enterprise Customer Control &amp; Convenience</h4>
+              <h4 class="text-xl font-semibold mb-4 accent-color">Challenge: Disconnected Experience for Enterprise Customers</h4>
               <p class="text-gray-700 mb-6 leading-relaxed">
-                Based on customer feedback, I spearheaded the initiative from discovery and proof of concept through full-scale launch—delivering innovative digital self-service solutions that empowered enterprise clients with greater control and convenience. The work earned significant industry recognition, including two Gold MarCom Awards and two Silver W3 Awards in 2023, underscoring my commitment to human-centered design, exceptional user experience, and increased product adoption in complex B2B/B2C environments.
+                Enterprise clients faced fragmented digital experiences, limited self-service options, and high dependency on support channels, resulting in frustration, operational bottlenecks, and missed opportunities for engagement.
+              </p>
+              <h4 class="text-xl font-semibold mb-4 accent-color">Action: Vision, Discovery & Human-Centered Design</h4>
+              <p class="text-gray-700 mb-6 leading-relaxed">
+                I led cross-functional teams from discovery and proof of concept through full-scale launch, partnering directly with customers and internal stakeholders to deeply understand pain points and aspirations. We applied rigorous user research and human-centered design to develop a seamless, integrated self-service platform, empowering clients with greater control and convenience.
+              </p>
+              <h4 class="text-xl font-semibold mb-4 accent-color">Impact: Adoption, Recognition & Industry Leadership</h4>
+              <p class="text-gray-700 mb-6 leading-relaxed">
+                The initiative achieved a 200% increase in user adoption, a 35% lift in satisfaction, and significant operational savings. Our work earned two Gold MarCom Awards and two Silver W3 Awards in 2023 for best-in-class user experience and interactive design, positioning Comcast Business as a leader in enterprise digital transformation.
               </p>
               <a href="https://business.comcast.com/Comcast-Business-Puts-Control-and-Convenience-in-the-Hands-of-Enterprise-Customers"
                  target="_blank" rel="noopener noreferrer"
